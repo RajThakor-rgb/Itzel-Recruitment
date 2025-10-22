@@ -1,0 +1,30 @@
+<div class="programme-card bg-white" style="border: 2px solid #8B00FF; border-radius: 0.5rem; overflow: hidden; display: flex; flex-direction: column; height: 100%; font-family: 'Inter', sans-serif; box-shadow: 0 4px 6px rgba(139, 0, 255, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 15px rgba(139, 0, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(139, 0, 255, 0.1)';">
+    <img src="https://itzelrecruitment.com/wp-content/uploads/2025/08/pexels-shvetsa-5069611-scaled.jpg" alt="Dermatology" style="width: 100%; height: 16rem; object-fit: cover;" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+    <div class="card-body" style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+        <div class="card-details text-gray-700" style="flex-grow: 1;">
+            <h4 class="text-xl font-semibold mb-2" style="color: #6A0DAD; font-size: 1.85rem; font-weight: 600; margin-bottom: 0.75rem;">Professional Diploma in Dermatology</h4>
+            <p style="margin-bottom: 0.5rem; font-weight: 500; color: #1e293b;">Royal College of Physician of Ireland</p>
+            <p style="margin-bottom: 0.5rem; color: #6B7280; display: inline-block; background: linear-gradient(135deg, #f3e8ff, #ede9fe); padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 1.25rem; font-weight: 500;">📍 Fully Online</p>
+            <p style="margin-bottom: 1.5rem; color: #6B7280;">⏱️ 9 months</p>
+            <p style="font-weight: 700; font-size: 1.5rem; color: #6A0DAD; margin-top: 0.75rem;">£3,600</p>
+        </div>
+        
+        <a href="https://itzelrecruitment.com/royal-college-of-physician-of-ireland/" class="btn-secondary" 
+           style="background: #8B00FF; /* Changed to solid purple */ color: #FFFFFF; display: block; text-align: center; width: 100%; padding: 0.75rem 1rem; border-radius: 0.5rem; font-weight: 600; margin-top: 1.5rem; text-decoration: none; border: none; box-shadow: 0 0 15px rgba(218, 0, 255, 0.4); transition: all 0.3s ease;" 
+           
+           onmouseover="
+             this.style.background='#FBC02D'; /* Yellow background */
+             this.style.color='#333333'; /* Dark text for readability */
+             this.style.boxShadow='0 0 25px rgba(251, 192, 45, 0.6)'; /* Yellow shadow */
+             this.style.transform='translateY(-2px)';" 
+             
+           onmouseout="
+             this.style.background='#8B00FF'; /* Revert to solid purple */
+             this.style.color='#FFFFFF'; /* Revert to white text */
+             this.style.boxShadow='0 0 15px rgba(218, 0, 255, 0.4)'; /* Revert to purple shadow */
+             this.style.transform='translateY(0)';"
+        >
+          View Programme
+        </a>
+    </div>
+</div>
