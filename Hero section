@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Hero - Itzel Recruitment</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+        /* --- BRANDING & STYLES --- */
+        :root {
+            /* * --- MODIFICATION 1 --- 
+             * Replaced neutral greys with a professional blue theme.
+            */
+            --color-primary: #004085; /* A dark, professional blue */
+            --color-accent: #007bff; /* A brighter, standard web blue */
+            --color-white: #FFFFFF;
+        }
+
+        /* --- BASE RESET FOR THE WIDGET --- */
+        .hero-wrapper * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- MAIN HERO CONTAINER --- */
+        .hero-wrapper {
+            position: relative;
+            height: 90vh;
+            min-height: 650px;
+            width: 100%;
+            overflow: hidden;
+            color: var(--color-white);
+        }
+
+        /* --- SLIDER & SLIDES --- */
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-slide.active { opacity: 1; }
+        
+        /* Set background images */
+        .slide-1 { background-image: url('https://itzelrecruitment.com/wp-content/uploads/2025/09/AdobeStock_100466117-scaled.jpeg'); }
+        .slide-2 { background-image: url('https://itzelrecruitment.com/wp-content/uploads/2025/09/AdobeStock_164553333-scaled.jpeg'); }
+        .slide-3 { background-image: url('https://itzelrecruitment.com/wp-content/uploads/2025/09/AdobeStock_135843151-scaled.jpeg'); }
+        .slide-4 { background-image: url('https://itzelrecruitment.com/wp-content/uploads/2025/09/AdobeStock_595698857.jpeg'); }
+
+        /* * --- (No Change) --- 
+         * Keeping the neutral black gradient for the overlay.
+         * This provides good contrast and avoids the "too bright" issue.
+        */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 100%);
+        }
+        
+        /* --- CONTENT ALIGNMENT & STYLING --- */
+        .slide-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+        .slide-content-inner {
+            max-width: 600px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-wrapper h1 {
+            font-size: 3rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 1rem !important;
+            line-height: 1.2 !important;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+            color: var(--color-white) !important;
+        }
+        .hero-wrapper p {
+            font-size: 1.2rem !important;
+            margin-bottom: 2rem !important;
+            line-height: 1.6 !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* * --- MODIFICATION 2 --- 
+         * Scholarship badge now uses the blue accent color.
+        */
+        .scholarship-badge {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- BUTTON STYLES --- */
+        .btn {
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        /* * --- MODIFICATION 3 --- 
+         * Primary button is now solid blue.
+         * Hovers to the brighter accent blue.
+        */
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        .btn-primary:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        /* * --- MODIFICATION 4 --- 
+         * Secondary (ghost) button is unchanged,
+         * but its hover text color now uses the new blue primary color.
+        */
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-primary); /* Uses new blue for text */
+            transform: translateY(-2px);
+        }
+
+        /* --- INDICATORS --- */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            display: flex;
+            gap: 0.8rem;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .indicator.active {
+            background: var(--color-white);
+            transform: scale(1.3);
+        }
+
+        /* --- PHONE VIEW FIXES --- */
+        @media (max-width: 768px) {
+            .hero-wrapper {
+                height: auto;
+                min-height: 90vh;
+                display: flex;
+                align-items: center;
+            }
+            .slide-content {
+                align-items: center;
+                text-align: center;
+                padding: 4rem 1.5rem;
+            }
+            .slide-content-inner {
+                max-width: 100%;
+            }
+            .hero-wrapper h1 {
+                font-size: 2.2rem !important;
+            }
+            .hero-wrapper p {
+                font-size: 1.1rem !important;
+            }
+            .button-group {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero-wrapper">
+    <div class="hero-carousel">
+        <div class="hero-slide slide-1 active">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <div class="slide-content-inner">
+                    <h1>Empowering Global Careers Through Education & Guidance</h1>
+                    <p>Discover programmes from top UK universities like University of Warwick, King's College London, and more.</p>
+                    <div class="button-group">
+                        <a href="https://itzelrecruitment.com/student-help/" class="btn btn-primary">Read More</a>
+                        <a href="https://itzelrecruitment.com/consult-us/" class="btn btn-secondary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide slide-2">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <div class="slide-content-inner">
+                    <div class="scholarship-badge">🎓 EXCLUSIVE SCHOLARSHIP</div>
+                    <h1>Upto £7,000 Scholarship at Aston University London</h1>
+                    <p>Unlock your potential with prestigious programmes at Aston University's London campus. Take advantage of our exclusive scholarship.</p>
+                    <div class="button-group">
+                        <a href="https://itzelrecruitment.com/consult-us/" class="btn btn-primary">Apply Now</a>
+                        <a href="https://itzelrecruitment.com/aston-university/" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide slide-3">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <div class="slide-content-inner">
+                    <h1>Flexible Online Learning from Top Universities</h1>
+                    <p>Study from anywhere with our comprehensive online programmes. Access world-class education from top-tier institutions.</p>
+                    <div class="button-group">
+                        <a href="https://itzelrecruitment.com/online-program/" class="btn btn-primary">View Programmes</a>
+                        <a href="https://itzelrecruitment.com/consult-us/" class="btn btn-secondary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide slide-4">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <div class="slide-content-inner">
+                    <h1>Expert Student Guidance & Support</h1>
+                    <p>Navigate your educational journey with confidence. Our experienced consultants provide personalized guidance from application to graduation.</p>
+                    <div class="button-group">
+                        <a href="https://itzelrecruitment.com/consult-us/" class="btn btn-primary">Book a Consultation</a>
+                        <a href="https://itzelrecruitment.com/student-help/" class="btn btn-secondary">Our Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel-indicators">
+        <div class="indicator active" data-slide-to="0"></div>
+        <div class="indicator" data-slide-to="1"></div>
+        <div class="indicator" data-slide-to="2"></div>
+        <div class="indicator" data-slide-to="3"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.heroSliderInitialized) return;
+        window.heroSliderInitialized = true;
+
+        const container = document.querySelector('.hero-wrapper');
+        if (!container) return;
+
+        const slides = Array.from(container.querySelectorAll('.hero-slide'));
+        const indicators = Array.from(container.querySelectorAll('.indicator'));
+        if (slides.length < 2) return;
+
+        let currentSlide = 0;
+        let autoAdvanceInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            indicators.forEach((indicator, i) => indicator.classList.toggle('active', i === index));
+            currentSlide = index;
+        }
+
+        function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+        function startAuto() { stopAuto(); autoAdvanceInterval = setInterval(nextSlide, 5000); }
+        function stopAuto() { clearInterval(autoAdvanceInterval); }
+
+        indicators.forEach(ind => ind.addEventListener('click', () => {
+            showSlide(parseInt(ind.dataset.slideTo, 10));
+            startAuto();
+        }));
+        
+        container.addEventListener('mouseenter', stopAuto);
+        container.addEventListener('mouseleave', startAuto);
+
+        showSlide(0);
+        startAuto();
+    });
+</script>
+
+</body>
+</html>
